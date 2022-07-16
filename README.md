@@ -13,7 +13,7 @@
   Below you will find direct links to each coding file, some files will have very basic code, others will have very advanced code.
 </p>
 
-<h3 align="center">Below you will find direct links to each coding file, some files will have very basic code, others will have more advanced code.</h3>
+<h1 align="center">Below you will find direct links to each coding file, some files will have very basic code, others will have more advanced code.</h1>
 
 <ul>
   <li><a href="https://github.com/M-HarrisJr/C-Plus-Plus-File/blob/main/Basic%20Sales%20Tax"><b>Basic Sales Tax Code</b></a><br/><i>This code shows basic math & is a very beginner code.</i></li>
