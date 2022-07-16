@@ -9,9 +9,6 @@
 
 <br/>
 
-<p align="center">
-  Below you will find direct links to each coding file, some files will have very basic code, others will have very advanced code.
-</p>
 
 <h1 align="center">Below you will find direct links to each coding file, some files will have very basic code, others will have more advanced code.</h1>
 
