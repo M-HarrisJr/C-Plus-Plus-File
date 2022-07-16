@@ -1,1 +1,43 @@
-Test
+// Michael Harris
+
+// This code was written and ran in Visual Studio C++
+
+// The goal of this code was to use constants and show all information of the transaction involving these constants
+
+// This is basic level code showing basic level math
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+
+	// Constants
+	const double ITEM_ONE = 15.95;
+	const double ITEM_TWO = 24.95;
+	const double ITEM_THREE = 6.95;
+	const double ITEM_FOUR = 12.95;
+	const double ITEM_FIVE = 3.95;
+
+	// Displays the cost of each item
+	cout << "The cost of these items is $" << ITEM_ONE << ", $" << ITEM_TWO << ", $" << ITEM_THREE << ", $" << ITEM_FOUR << ", $" << ITEM_FIVE << "." << endl;
+
+	// Initializing the variable
+	double SUB_TOTAL = 0;
+
+	// Adding the cost of the items to gain the initial total before the sales tax is applied
+	SUB_TOTAL = ITEM_ONE + ITEM_TWO + ITEM_THREE + ITEM_FOUR + ITEM_FIVE;
+
+	// The previous information is now displayed and shows the sales tax that is about to be applied
+	cout << "The subtotal before tax is $" << SUB_TOTAL << ". The sales tax is 7%" << endl;
+
+	double AFTER_TAX = 0;
+
+	// Subtotal is applied and shown to the customer
+	AFTER_TAX = SUB_TOTAL * 0.93;
+
+	cout << "Your total cost is $" << AFTER_TAX << "." << endl;
+
+	return 0;
+}
