@@ -5,6 +5,8 @@
 
 <h2 align="center">This file will showcase beginner, intermediate, and some advanced code in the language: C++</h2>
 
+<br/>
+
 <h3 align="center">All of the coding examples in this file have been created from scratch based on different scenarios given in Gwinnett Technical College courses and different C++ programming books.</h3>
 
 <br/>
