@@ -1,0 +1,195 @@
+// Michael Harris
+
+// This code was written and ran in Visual Studio C++
+
+// The goal of this code was to use lists and nodes to show the knowledge of the subject
+
+// This code is the first of 2 parts of code. This first portion is the (source.cpp)
+
+#include <iostream>
+#include "NumberList.h"
+using namespace std;
+
+int main()
+{
+	NumberList list;
+
+	list.appendNode(2.5);
+	list.appendNode(7.9);
+	list.appendNode(12.6);
+
+	cout << "Here are the initial values:\n";
+	list.displayList();
+	cout << endl;
+
+	cout << "Now deleting the node in the middle.\n";
+	list.deleteNode(7.9);
+
+	cout << "Here are the nodes left\n";
+	list.displayList();
+	cout << endl;
+	
+	cout << "Now deleting the last node.\n";
+	list.deleteNode(12.6);
+
+	cout << "Here are the nodes left\n";
+	list.displayList();
+	cout << endl;
+
+	cout << "Now deleting the only remaining node.\n";
+	list.deleteNode(2.5);
+
+	cout << "Here are the nodes left.\n";
+	list.displayList();
+	return 0;
+
+	return 0;
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// This code is the second of 2 parts of code. This second portion is the (NumberList.h)
+
+#ifndef NUMBERLIST_H
+#define NUMBERLIST_H
+
+#include <iostream>
+
+using std::cout;
+using std::endl;
+using std::cin;
+
+class NumberList
+{
+private:
+	struct ListNode
+	{
+
+		double value;
+		struct ListNode* next;
+	};
+
+	ListNode* head;
+
+public:
+	NumberList()
+	{
+		head = nullptr; 
+	}
+	~NumberList();
+
+	void appendNode(double);
+	void insertNode(double);
+	void deleteNode(double);
+	void displayList() const;
+};
+
+void NumberList::appendNode(double num) {
+	ListNode* newNode;
+	ListNode* nodePtr;
+
+	newNode = new ListNode;
+	newNode->value = num;
+	newNode->next = nullptr;
+
+	if (!head)
+		head = newNode;
+	else {
+		nodePtr = head;
+
+		while (nodePtr->next)
+			nodePtr = nodePtr->next;
+
+		nodePtr->next = newNode;
+	}
+}
+
+void NumberList::displayList() const
+{
+	ListNode* nodePtr;
+	nodePtr = head;
+
+	while (nodePtr) {
+
+		cout << nodePtr->value << endl;
+		nodePtr = nodePtr->next;
+	}
+}
+
+void NumberList::insertNode(double num)
+{
+	ListNode* newNode;
+	ListNode* nodePtr;
+	ListNode* previousNode = nullptr;
+
+	newNode = new ListNode;
+	newNode->value = num;
+
+	if (!head) {
+		head = newNode;
+		newNode->next = nullptr;
+	}
+	else {
+		nodePtr = head;
+
+		previousNode = nullptr;
+
+		while (nodePtr != nullptr && nodePtr->value < num) {
+			previousNode = nodePtr;
+			nodePtr = nodePtr->next;
+		}
+
+		if (previousNode == nullptr) {
+			head = newNode;
+			newNode->next = nodePtr;
+		}
+		else {
+			previousNode->next = newNode;
+			newNode->next = nodePtr;
+		}
+	}
+}
+
+void NumberList::deleteNode(double num) {
+	ListNode* nodePtr;
+	ListNode* previousNode;
+
+	if (!head)
+		return;
+
+	if (head->value == num)
+	{
+		nodePtr = head->next;
+		delete head;
+		head = nodePtr;
+	}
+	else {
+		nodePtr = head;
+
+		while (nodePtr != nullptr && nodePtr->value != num) {
+			previousNode = nodePtr;
+			nodePtr = nodePtr->next;
+		}
+
+		if (nodePtr) {
+			previousNode->next = nodePtr->next;
+			delete nodePtr;
+		}
+	}
+}
+
+NumberList::~NumberList() {
+	ListNode* nodePtr;
+	ListNode* nextNode;
+
+	nodePtr = head;
+
+	while (nodePtr != nullptr) {
+		nextNode = nodePtr->next;
+
+		delete nodePtr;
+
+		nodePtr = nextNode;
+	}
+}
+#endif
