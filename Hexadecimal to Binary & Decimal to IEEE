@@ -1,0 +1,92 @@
+// Michael Harris
+
+// This code was written and ran in Visual Studio C++
+
+// The goal of this code was to use constants and show all information of the transaction involving these constants
+
+// This is basic level code showing basic level math
+
+#include <iostream>
+#include <string>
+#include <stdio.h>
+using namespace std;
+
+void decToBin() {
+	// Here is where the conversion from decimal to binary takes place
+	int num, count = 0, bin[100];
+	int remNum;
+	cout << "Enter a value to get converted to binary: ";
+	cin >> num;
+
+	// The calculation takes place right here
+	for (int i = 0; num > 0; i++) {
+		bin[i] = num % 2;
+		num = num / 2;
+		count++;
+	}
+
+	// The program output goes here, while also setting the values back to NULL for future use
+	cout << "The binary result is: ";
+	for (int j = count - 1; j >= 0; j--) {
+		cout << bin[j];
+		bin[j] = NULL;
+	}
+	cout << endl;
+}
+
+// Below is the program that changes the users input from a hex character to a binary number. The application works from (0-9) and from (A-F)
+
+void hexToBin() {
+	// Initializations/User Input
+	string binary = "";
+	int num2 = 0;
+	string text;
+	cout << "Enter a hexadecimal value to get converted to binary: ";
+	cin >> text;
+
+	// Calculations for the conversion from hexadecimal to binary
+	for (int i = 0; i < text.length(); i++) {
+		string temp = "";
+		if (text[i] >= '0' && text[i] <= '9') {
+			num2 = int(text[i]) - 48;
+			while (num2 > 0) {
+				temp += char(num2 % 2 + 48);
+				num2 = num2 / 2;
+			}
+			while (temp.length() != 4) {
+				temp += '0';
+			}
+			num2 = 0;
+		}
+		else {
+			num2 = text[i] - 'A' + 10;
+			while (num2 > 0) {
+				temp += char(num2 % 2 + 48);
+				num2 = num2 / 2;
+			}
+		}
+		for (int j = 3; j >= 0; j--) {
+			binary += temp[j];
+		}
+	}
+	cout << endl << "The binary result is: " << binary << endl;
+}
+
+// Main program to continue running the program until the user chooses to exit the application
+int main() {
+	int answer = 0;
+
+	cout << "Enter a number: " << endl << "1: Decimal to IEEE.		2: Convert Hexadecimal to binary.		3: Exit." << endl;
+	cin >> answer;
+
+	while (answer != 3) {
+		if (answer == 1) {
+			decToBin();
+		}
+		if (answer == 2) {
+			hexToBin();
+		}
+		cout << "Enter a number: " << endl << "1: Decimal to IEEE.		2: Convert Hexadecimal to binary.		3: Exit." << endl;
+		cin >> answer;
+	}
+}		
